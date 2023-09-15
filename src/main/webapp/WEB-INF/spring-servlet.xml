@@ -25,51 +25,50 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-<!-- <tx:annotation-driven />
+ <tx:annotation-driven />
 
+		
+	<!-- Bean-4 for DriverManagerDataSource -->
 	<bean name="ds"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"	>
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
-
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/spring_orm" />
+			value="jdbc:mysql://localhost:3306/springjdbc" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
 
-
+	<!-- Bean-3 for LocalFactorySession -->
 	<bean name="factory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-
-		<property name="dataSource" ref="ds" />
-
-		<property name="hibernateProperties">
+		<property name="dataSource" ref="ds"></property>   <!-- 1.DataSource -->
+		<property name="hibernateProperties">      <!-- 2.Hibernate -->
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_Sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-
-		<property name="annotatedClasses">
+		
+		<property name="annotatedClasses">    <!-- 3.AnnotationClass -->
 			<list>
 				<value>com.springmvc.entity.Emp</value>
-				<value>com.becoder.entity.User</value>
 			</list>
 		</property>
 	</bean>
 
-	<bean name="hibernateTemplate"
-		class="org.springframework.orm.hibernate5.HibernateTemplate">
+	<!-- Bean-2 for HibernateTemplate -->
+	<bean name="hibernateTemplate" 
+	     class="org.springframework.orm.hibernate5.HibernateTemplate"> <!-- we created this name instance in UserDao -->
 		<property name="sessionFactory" ref="factory"></property>
 	</bean>
-
+	
+	<!-- Bean-5 for HibernateTransactionManager put context:annotation tag also -->
 	<bean name="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="factory" /> 
-	</bean> -->
+		<property name="sessionFactory" ref="factory"></property>
+	</bean>
 	
 </beans>
