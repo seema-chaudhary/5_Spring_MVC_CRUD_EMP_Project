@@ -44,7 +44,7 @@
 					<div class="card-header text-center">
 						<h3>Edit Emp</h3>
 						<c:if test="${not empty msg }">
-						<h5>${msg }</h5> 
+						<h5 class="text-success">${msg }</h5> 
 						<c:remove var="msg"/>
 						</c:if>						
 					</div>

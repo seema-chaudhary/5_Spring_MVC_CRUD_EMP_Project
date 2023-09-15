@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Employee</title>
+<title>User Login</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -31,34 +31,32 @@
         <li class="nav-item">
           <a class="nav-link" href="addEmp">Add Emp</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="register">Register</a>
+        </li>
         
       </ul>
       
   </div>
 </nav>
 	
-<div class="conatiner">
+<div class="conatiner p-3">
 		<div class="row">
-			<div class="col-md-6 offset-md-3">
+			<div class="col-md-4 offset-md-4">
 				<div class="card">
 					<div class="card-header text-center">
-						<h3>Add Emp</h3>
+						<h3>Login</h3>
 						<c:if test="${not empty msg }">
 						<h5 class="text-success">${msg }</h5> 
 						<c:remove var="msg"/>
 						</c:if>						
 					</div>
 					<div class="card-body">
-						<form action="createEmp" method="post">
-							<div class="mb-3">
-								<label>Enter Full Name</label> <input type="text"
-									name="fullName" class="form-control">
-							</div>
-							<div class="mb-3">
-								<label>Enter Address</label> <input type="text" name="address"
-									class="form-control">
-							</div>
-
+						<form action="userlogin" method="post">
+						
 							<div class="mb-3">
 								<label>Enter Email</label> <input type="text" name="email"
 									class="form-control">
@@ -69,17 +67,8 @@
 									class="form-control">
 							</div>
 
-							<div class="mb-3">
-								<label>Enter Designation</label> <input type="text"
-									name="designation" class="form-control">
-							</div>
-
-							<div class="mb-3">
-								<label>Enter Salary</label> <input type="text" name="salary"
-									class="form-control">
-							</div>
-
-							<button class="btn btn-primary">Submit</button>
+							
+							<button class="btn btn-primary col-md-12">Login</button>
 						</form>
 					</div>
 				</div>
