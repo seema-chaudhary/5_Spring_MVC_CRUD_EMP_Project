@@ -60,4 +60,12 @@ public class HomeController {
 		session.setAttribute("msg", "Updated Successfully.....");
 		return "redirect:/home";
 	}	
+	
+	@RequestMapping(path="/deleteEmp/{id}")
+	public String deleteEmp(@PathVariable int id, HttpSession session)
+	{
+		empDao.deleteEmp(id);
+		session.setAttribute("msg", "Deleted Successfully.....");
+		return "redirect:/home";
+	}	
 }
