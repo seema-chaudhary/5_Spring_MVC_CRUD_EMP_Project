@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -43,4 +44,20 @@ public class HomeController {
 		return "redirect:/addEmp";
 	}	
 	
+	
+	@RequestMapping(path="/editEmp/{id}")
+	public String editEmp(@PathVariable int id, Model m)
+	{
+		Emp emp=empDao.getEmpById(id);
+		m.addAttribute("emp", emp);
+		return "editEmp";
+	}	
+	
+	@RequestMapping(path="/updateEmp", method = RequestMethod.POST)
+	public String updateEmp(@ModelAttribute Emp emp, HttpSession session)
+	{	
+		empDao.update(emp);
+		session.setAttribute("msg", "Updated Successfully.....");
+		return "redirect:/home";
+	}	
 }
